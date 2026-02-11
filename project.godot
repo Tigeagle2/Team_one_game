@@ -14,6 +14,11 @@ config/name="Team_one_game"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://Assets/Sprites/icon.svg"
 
+[autoload]
+
+gamemanager="*res://Scripts/gamemanager.gd"
+audiomanager="*res://Scripts/audiomanager.gd"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"
