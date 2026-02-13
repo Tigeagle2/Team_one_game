@@ -12,21 +12,21 @@ offset_right = 1101.0
 offset_bottom = 592.0
 tooltip_text = "ggddf"
 
-[node name="TextureButton" type="TextureButton" parent="weapon_select_panel"]
+[node name="weapon_button_1" type="TextureButton" parent="weapon_select_panel"]
 layout_mode = 0
 offset_left = 68.0
 offset_top = 138.0
 offset_right = 306.0
 offset_bottom = 403.0
 
-[node name="TextureButton2" type="TextureButton" parent="weapon_select_panel"]
+[node name="weapon_button_2" type="TextureButton" parent="weapon_select_panel"]
 layout_mode = 0
 offset_left = 403.0
 offset_top = 136.0
 offset_right = 641.0
 offset_bottom = 401.0
 
-[node name="TextureButton3" type="TextureButton" parent="weapon_select_panel"]
+[node name="weapon_" type="TextureButton" parent="weapon_select_panel"]
 layout_mode = 0
 offset_left = 743.0
 offset_top = 129.0
