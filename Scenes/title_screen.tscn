@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://ccw6tcxa7cfd1"]
+[gd_scene load_steps=2 format=3 uid="uid://ccw6tcxa7cfd1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_62dcu"]
+font_size = 40
 
 [node name="title_screen" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 436.0
+offset_top = 113.0
+offset_right = 730.0
+offset_bottom = 168.0
+text = "Title Goes Here"
+label_settings = SubResource("LabelSettings_62dcu")

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dvq3pxmkr5187"]
+
+[node name="dark_choc_steak" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

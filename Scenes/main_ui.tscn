@@ -1,3 +1,34 @@
-[gd_scene format=3 uid="uid://bdvohluudbabh"]
+[gd_scene load_steps=2 format=3 uid="uid://bdvohluudbabh"]
 
-[node name="Main_ui" type="CanvasLayer"]
+[ext_resource type="Script" uid="uid://cyiyvno6qa01q" path="res://Scripts/main_ui.gd" id="1_gmh8u"]
+
+[node name="main_ui" type="CanvasLayer"]
+script = ExtResource("1_gmh8u")
+
+[node name="weapon_select_panel" type="Panel" parent="."]
+offset_left = 35.0
+offset_top = 44.0
+offset_right = 1101.0
+offset_bottom = 592.0
+tooltip_text = "ggddf"
+
+[node name="TextureButton" type="TextureButton" parent="weapon_select_panel"]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 138.0
+offset_right = 306.0
+offset_bottom = 403.0
+
+[node name="TextureButton2" type="TextureButton" parent="weapon_select_panel"]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 136.0
+offset_right = 641.0
+offset_bottom = 401.0
+
+[node name="TextureButton3" type="TextureButton" parent="weapon_select_panel"]
+layout_mode = 0
+offset_left = 743.0
+offset_top = 129.0
+offset_right = 981.0
+offset_bottom = 394.0
