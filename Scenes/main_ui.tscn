@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://b5jyxl72fc1dj" path="res://Assets/Sprites/Holy Milk.png" id="4_7okpu"]
 
 [node name="main_ui" type="CanvasLayer"]
-visible = false
 script = ExtResource("1_gmh8u")
 
 [node name="weapon_select_panel" type="Panel" parent="."]
