@@ -12,6 +12,7 @@ var weapons_library = {
 }
 @onready var weapon_slot = $weapon_slot
 @onready var ui = $main_ui
+var current_weapon
 func _ready() -> void:
 	ui.weapon_selected.connect(equip_weapon)
 func _physics_process(delta: float) -> void:
@@ -47,4 +48,8 @@ func equip_weapon(weapon_name: String):
 	var weapon_scene = weapons_library[weapon_name]
 	var new_weapon = weapon_scene.instantiate()
 	weapon_slot.add_child(new_weapon)
-	
+	current_weapon = $weapon_slot.get_child(0)
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("attack"):
+		if current_weapon.has_method("_attack"):
+			current_weapon._attack()
