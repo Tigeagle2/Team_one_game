@@ -1,12 +1,19 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
+const SPEED = 900.0
 const JUMP_VELOCITY = -400.0
 var coyote_time: float = 0.15  
 var jump_buffer_time: float = 0.15 
 var coyote_timer: float = 0.0
 var jump_buffer_timer: float = 0.0
+var dash_cooldown = 2.0
+var dash_time = 0.1
+var dash_power = 50.0
+
+var dash_ready: bool = true
+var dashing: bool = false
+var player_direction = 1
 var weapons_library = {
 	"choc_steak" : preload("res://Scenes/Weapons/dark_choc_steak.tscn")
 }
@@ -37,6 +44,12 @@ func _physics_process(delta: float) -> void:
 		velocity.x = input_direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	if input_direction != 0 and not dashing:
+		player_direction = sign(input_direction)	
+		print(player_direction)
+	if dashing:
+		velocity.x = player_direction * dash_power * 100
+		print(player_direction * delta * dash_power)
 
 	move_and_slide()
 func equip_weapon(weapon_name: String):
@@ -53,3 +66,11 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
 		if current_weapon.has_method("_attack"):
 			current_weapon._attack()
+	elif event.is_action_pressed("dash") && dash_ready == true: 
+		print("dash")
+		dash_ready = false
+		dashing = true
+		await get_tree().create_timer(dash_time).timeout
+		dashing = false
+		await get_tree().create_timer(dash_cooldown).timeout
+		dash_ready = true

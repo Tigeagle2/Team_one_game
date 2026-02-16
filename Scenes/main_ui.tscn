@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdvohluudbabh"]
+[gd_scene load_steps=5 format=3 uid="uid://bdvohluudbabh"]
 
 [ext_resource type="Script" uid="uid://cyiyvno6qa01q" path="res://Scripts/main_ui.gd" id="1_gmh8u"]
+[ext_resource type="Texture2D" uid="uid://df6g5avlwsbq2" path="res://Assets/Sprites/Dark Chocolate Stake.png" id="2_dcbcb"]
+[ext_resource type="Texture2D" uid="uid://c5fklb6a4b10a" path="res://Assets/Sprites/Silver_Spoon_Bowl.png" id="3_tbbry"]
+[ext_resource type="Texture2D" uid="uid://b5jyxl72fc1dj" path="res://Assets/Sprites/Holy Milk.png" id="4_7okpu"]
 
 [node name="main_ui" type="CanvasLayer"]
+visible = false
 script = ExtResource("1_gmh8u")
 
 [node name="weapon_select_panel" type="Panel" parent="."]
@@ -18,6 +22,7 @@ offset_left = 68.0
 offset_top = 138.0
 offset_right = 306.0
 offset_bottom = 403.0
+texture_normal = ExtResource("2_dcbcb")
 
 [node name="weapon_button_2" type="TextureButton" parent="weapon_select_panel"]
 layout_mode = 0
@@ -25,10 +30,12 @@ offset_left = 403.0
 offset_top = 136.0
 offset_right = 641.0
 offset_bottom = 401.0
+texture_normal = ExtResource("3_tbbry")
 
-[node name="weapon_" type="TextureButton" parent="weapon_select_panel"]
+[node name="weapon_button_3" type="TextureButton" parent="weapon_select_panel"]
 layout_mode = 0
 offset_left = 743.0
-offset_top = 129.0
-offset_right = 981.0
-offset_bottom = 394.0
+offset_top = 139.0
+offset_right = 1063.0
+offset_bottom = 459.0
+texture_normal = ExtResource("4_7okpu")
