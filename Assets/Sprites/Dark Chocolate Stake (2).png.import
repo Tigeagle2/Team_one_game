@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnacp7yba1abi"
-path="res://.godot/imported/Dark Chocolate Stake (1).png-fe1fe362c026d2fab9a70197f1a07055.ctex"
+uid="uid://v4ijrb15mok1"
+path="res://.godot/imported/Dark Chocolate Stake (2).png-79f881e15271e88848db01aa5e0643c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Dark Chocolate Stake (1).png"
-dest_files=["res://.godot/imported/Dark Chocolate Stake (1).png-fe1fe362c026d2fab9a70197f1a07055.ctex"]
+source_file="res://Assets/Sprites/Dark Chocolate Stake (2).png"
+dest_files=["res://.godot/imported/Dark Chocolate Stake (2).png-79f881e15271e88848db01aa5e0643c7.ctex"]
 
 [params]
 

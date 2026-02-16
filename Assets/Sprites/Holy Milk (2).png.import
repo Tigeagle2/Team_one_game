@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duoy07udksf1h"
-path="res://.godot/imported/Holy Milk (1).png-c55625ae59d6b07bd0e06032d623ef74.ctex"
+uid="uid://ctxsvs6g6ucj4"
+path="res://.godot/imported/Holy Milk (2).png-149512f6d9d92d03a03984705a8a9634.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Holy Milk (1).png"
-dest_files=["res://.godot/imported/Holy Milk (1).png-c55625ae59d6b07bd0e06032d623ef74.ctex"]
+source_file="res://Assets/Sprites/Holy Milk (2).png"
+dest_files=["res://.godot/imported/Holy Milk (2).png-149512f6d9d92d03a03984705a8a9634.ctex"]
 
 [params]
 
