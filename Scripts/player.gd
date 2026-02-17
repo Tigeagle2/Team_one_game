@@ -15,13 +15,15 @@ var dash_ready: bool = true
 var dashing: bool = false
 var player_direction = 1
 var weapons_library = {
-	"choc_steak" : preload("res://Scenes/Weapons/dark_choc_steak.tscn")
-}
+	"choc_steak" : preload("res://Scenes/Weapons/dark_choc_steak.tscn"),
+	"spoon_bowl" : preload("res://Scenes/Weapons/silver_spoon_and_bowl.tscn"),
+	"holy_milk" : preload("res://Scenes/Weapons/holy_milk.tscn")
+	}
 @onready var weapon_slot = $weapon_slot
 @onready var ui = $main_ui
 var current_weapon
 func _ready() -> void:
-	ui.weapon_selected.connect(equip_weapon)
+	ui.weapon_selected.connect(_equip_weapon)
 func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		coyote_timer = coyote_time 
@@ -52,20 +54,26 @@ func _physics_process(delta: float) -> void:
 		print(player_direction * delta * dash_power)
 
 	move_and_slide()
-func equip_weapon(weapon_name: String):
+func _equip_weapon(weapon_name: String):
 	if not weapons_library.has(weapon_name):
-		print("weapon could not be found")
+		print("Weapon not found!")
 		return
 	for child in weapon_slot.get_children():
 		child.queue_free()
 	var weapon_scene = weapons_library[weapon_name]
-	var new_weapon = weapon_scene.instantiate()
-	weapon_slot.add_child(new_weapon)
-	current_weapon = $weapon_slot.get_child(0)
+	var new_instance = weapon_scene.instantiate()
+	weapon_slot.add_child(new_instance)
+	current_weapon = new_instance 
+	print("Successfully equipped: ", weapon_name)
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
-		if current_weapon.has_method("_attack"):
-			current_weapon._attack()
+		if is_instance_valid(current_weapon):
+			if current_weapon.has_method("_attack"):
+				current_weapon._attack()
+			else:
+				print("no attack method")
+		else:
+			print(" invalid instance")
 	elif event.is_action_pressed("dash") && dash_ready == true: 
 		print("dash")
 		dash_ready = false

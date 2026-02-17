@@ -20,27 +20,31 @@ tooltip_text = "ggddf"
 
 [node name="weapon_button_1" type="TextureButton" parent="weapon_select_panel"]
 layout_mode = 0
-offset_left = 68.0
-offset_top = 138.0
-offset_right = 306.0
-offset_bottom = 403.0
+offset_left = 37.0
+offset_top = 116.0
+offset_right = 357.0
+offset_bottom = 436.0
 texture_normal = ExtResource("2_dcbcb")
 texture_hover = ExtResource("3_ylo01")
 
 [node name="weapon_button_2" type="TextureButton" parent="weapon_select_panel"]
 layout_mode = 0
-offset_left = 403.0
-offset_top = 136.0
-offset_right = 641.0
-offset_bottom = 401.0
+offset_left = 365.0
+offset_top = 116.0
+offset_right = 685.0
+offset_bottom = 436.0
 texture_normal = ExtResource("3_tbbry")
 texture_hover = ExtResource("5_bhqku")
 
 [node name="weapon_button_3" type="TextureButton" parent="weapon_select_panel"]
 layout_mode = 0
-offset_left = 743.0
-offset_top = 139.0
-offset_right = 1063.0
-offset_bottom = 459.0
+offset_left = 693.0
+offset_top = 116.0
+offset_right = 1013.0
+offset_bottom = 436.0
 texture_normal = ExtResource("4_7okpu")
 texture_hover = ExtResource("7_ylo01")
+
+[connection signal="pressed" from="weapon_select_panel/weapon_button_1" to="." method="_on_weapon_button_1_pressed"]
+[connection signal="pressed" from="weapon_select_panel/weapon_button_2" to="." method="_on_weapon_button_2_pressed"]
+[connection signal="pressed" from="weapon_select_panel/weapon_button_3" to="." method="_on_weapon_button_3_pressed"]
