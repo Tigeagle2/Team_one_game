@@ -1,105 +1,70 @@
-[gd_scene load_steps=16 format=3 uid="uid://bk0lopc1kowlp"]
+[gd_scene load_steps=8 format=3 uid="uid://bk0lopc1kowlp"]
 
 [ext_resource type="Script" uid="uid://crl6a07rhre34" path="res://Scripts/player.gd" id="1_v0iea"]
 [ext_resource type="PackedScene" uid="uid://bdvohluudbabh" path="res://Scenes/main_ui.tscn" id="2_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://c3erynnl83t5s" path="res://Assets/Sprites/Cereal_Hunter.png" id="3_6t5aa"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6t5aa"]
-atlas = ExtResource("3_6t5aa")
-region = Rect2(0, 0, 30, 32)
+[sub_resource type="Animation" id="Animation_6t5aa"]
+resource_name = "Walk"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vgqql"]
-atlas = ExtResource("3_6t5aa")
-region = Rect2(30, 0, 30, 32)
+[sub_resource type="Animation" id="Animation_vgqql"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fkybt"]
-atlas = ExtResource("3_6t5aa")
-region = Rect2(60, 0, 30, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x3wgy"]
-atlas = ExtResource("3_6t5aa")
-region = Rect2(0, 32, 30, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3smsa"]
-atlas = ExtResource("3_6t5aa")
-region = Rect2(30, 32, 30, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8erm5"]
-atlas = ExtResource("3_6t5aa")
-region = Rect2(60, 32, 30, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f1ek2"]
-atlas = ExtResource("3_6t5aa")
-region = Rect2(0, 64, 30, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tx1dd"]
-atlas = ExtResource("3_6t5aa")
-region = Rect2(30, 64, 30, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gymyn"]
-atlas = ExtResource("3_6t5aa")
-region = Rect2(60, 64, 30, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pu2lt"]
-atlas = ExtResource("3_6t5aa")
-region = Rect2(0, 96, 30, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_7dp3o"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6t5aa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vgqql")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fkybt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x3wgy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3smsa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8erm5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f1ek2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tx1dd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gymyn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pu2lt")
-}],
-"loop": true,
-"name": &"Runnning",
-"speed": 10.0
-}]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fkybt"]
+_data = {
+&"RESET": SubResource("Animation_vgqql"),
+&"Walk": SubResource("Animation_6t5aa")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgqql"]
-size = Vector2(123, 122)
+size = Vector2(70, 102)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_v0iea")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_fkybt")
+}
+
 [node name="main_ui" parent="." instance=ExtResource("2_cvnsp")]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(7.4999967, 4.799996)
 scale = Vector2(3.7, 3.7000003)
-sprite_frames = SubResource("SpriteFrames_7dp3o")
-animation = &"Runnning"
-frame_progress = 0.73106664
+texture = ExtResource("3_6t5aa")
+hframes = 3
+vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.5, 4)
 shape = SubResource("RectangleShape2D_vgqql")
 
 [node name="weapon_slot" type="Marker2D" parent="."]

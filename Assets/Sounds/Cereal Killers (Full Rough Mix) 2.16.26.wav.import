@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cq1v07esxdpkl"
+path="res://.godot/imported/Cereal Killers (Full Rough Mix) 2.16.26.wav-294118fed43357e8e570e259cb09b3f1.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Cereal Killers (Full Rough Mix) 2.16.26.wav"
+dest_files=["res://.godot/imported/Cereal Killers (Full Rough Mix) 2.16.26.wav-294118fed43357e8e570e259cb09b3f1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
