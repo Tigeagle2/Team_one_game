@@ -1,5 +1,15 @@
-[gd_scene format=3 uid="uid://dvq3pxmkr5187"]
+[gd_scene load_steps=3 format=3 uid="uid://dvq3pxmkr5187"]
+
+[ext_resource type="Script" uid="uid://b8ymo2dnt4joc" path="res://Scripts/dark_choc_steak.gd" id="1_0hj0h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0hj0h"]
+size = Vector2(97.5, 102)
 
 [node name="dark_choc_steak" type="Area2D"]
+script = ExtResource("1_0hj0h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(49.25, 0)
+shape = SubResource("RectangleShape2D_0hj0h")

@@ -44,14 +44,17 @@ func _physics_process(delta: float) -> void:
 	var input_direction = Input.get_axis("key_a", "key_d")	
 	if input_direction:
 		velocity.x = input_direction * SPEED
+		$AnimationPlayer.play("Walk")
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	if input_direction != 0 and not dashing:
 		player_direction = sign(input_direction)	
-		print(player_direction)
+		$Sprite2D.flip_h = (player_direction == -1)
+		$weapon_slot.scale.x = player_direction
+		#print(player_direction)
 	if dashing:
 		velocity.x = player_direction * dash_power * 100
-		print(player_direction * delta * dash_power)
+		#print(player_direction * delta * dash_power)
 
 	move_and_slide()
 func _equip_weapon(weapon_name: String):
