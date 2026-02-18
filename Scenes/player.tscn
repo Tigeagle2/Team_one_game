@@ -90,6 +90,7 @@ collision_layer = 2
 script = ExtResource("1_v0iea")
 
 [node name="main_ui" parent="." instance=ExtResource("2_cvnsp")]
+visible = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(7.4999967, 4.799996)
