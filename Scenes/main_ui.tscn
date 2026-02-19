@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://bdvohluudbabh"]
 
 [ext_resource type="Script" uid="uid://cyiyvno6qa01q" path="res://Scripts/main_ui.gd" id="1_gmh8u"]
-[ext_resource type="Texture2D" uid="uid://df6g5avlwsbq2" path="res://Assets/Sprites/Dark Chocolate Stake.png" id="2_dcbcb"]
-[ext_resource type="Texture2D" uid="uid://c5fklb6a4b10a" path="res://Assets/Sprites/Silver_Spoon_Bowl.png" id="3_tbbry"]
-[ext_resource type="Texture2D" uid="uid://v4ijrb15mok1" path="res://Assets/Sprites/Dark Chocolate Stake (2).png" id="3_ylo01"]
-[ext_resource type="Texture2D" uid="uid://b5jyxl72fc1dj" path="res://Assets/Sprites/Holy Milk.png" id="4_7okpu"]
-[ext_resource type="Texture2D" uid="uid://207johi0lnaa" path="res://Assets/Sprites/Silver_Spoon_Bowl (2).png" id="5_bhqku"]
-[ext_resource type="Texture2D" uid="uid://ctxsvs6g6ucj4" path="res://Assets/Sprites/Holy Milk (2).png" id="7_ylo01"]
+[ext_resource type="Texture2D" uid="uid://df6g5avlwsbq2" path="res://Assets/Icon's/Dark Chocolate Stake.png" id="2_dcbcb"]
+[ext_resource type="Texture2D" uid="uid://c5fklb6a4b10a" path="res://Assets/Icon's/Silver_Spoon_Bowl.png" id="3_tbbry"]
+[ext_resource type="Texture2D" uid="uid://v4ijrb15mok1" path="res://Assets/Icon's/Dark Chocolate Stake (2).png" id="3_ylo01"]
+[ext_resource type="Texture2D" uid="uid://b5jyxl72fc1dj" path="res://Assets/Icon's/Holy Milk.png" id="4_7okpu"]
+[ext_resource type="Texture2D" uid="uid://207johi0lnaa" path="res://Assets/Icon's/Silver_Spoon_Bowl (2).png" id="5_bhqku"]
+[ext_resource type="Texture2D" uid="uid://ctxsvs6g6ucj4" path="res://Assets/Icon's/Holy Milk (2).png" id="7_ylo01"]
 
 [node name="main_ui" type="CanvasLayer"]
 script = ExtResource("1_gmh8u")

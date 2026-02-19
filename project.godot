@@ -52,3 +52,7 @@ dash={
 
 2d_physics/layer_1="Terrain"
 2d_physics/layer_2="Player"
+
+[physics]
+
+2d/default_gravity=2362.8370000000004

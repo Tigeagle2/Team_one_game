@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5jyxl72fc1dj"
-path="res://.godot/imported/Holy Milk.png-bdc932037d2cb902facc8200827a3375.ctex"
+uid="uid://207johi0lnaa"
+path="res://.godot/imported/Silver_Spoon_Bowl (2).png-4eedb05cb4d04dd80755cd9ea1070742.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Holy Milk.png"
-dest_files=["res://.godot/imported/Holy Milk.png-bdc932037d2cb902facc8200827a3375.ctex"]
+source_file="res://Assets/Icon's/Silver_Spoon_Bowl (2).png"
+dest_files=["res://.godot/imported/Silver_Spoon_Bowl (2).png-4eedb05cb4d04dd80755cd9ea1070742.ctex"]
 
 [params]
 

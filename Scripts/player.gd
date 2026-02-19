@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 900.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -1000.0
 var coyote_time: float = 0.15  
 var jump_buffer_time: float = 0.15 
 var coyote_timer: float = 0.0
