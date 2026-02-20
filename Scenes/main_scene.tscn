@@ -1599,4 +1599,4 @@ tile_set = SubResource("TileSet_x6ack")
 position = Vector2(240, 171)
 
 [node name="test_enemy" parent="." instance=ExtResource("4_x6ack")]
-position = Vector2(1607, 187)
+position = Vector2(745, 131)
