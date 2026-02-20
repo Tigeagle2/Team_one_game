@@ -10,7 +10,7 @@ var jump_buffer_timer: float = 0.0
 var fall_multiplier = 1.5
 var dash_cooldown = 2.0
 var dash_time = 0.1
-var dash_power = 50.0
+var dash_power = 25.0
 
 var dash_ready: bool = true
 var dashing: bool = false
