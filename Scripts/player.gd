@@ -2,11 +2,12 @@ extends CharacterBody2D
 
 
 const SPEED = 900.0
-const JUMP_VELOCITY = -1000.0
+const JUMP_VELOCITY = -800.0
 var coyote_time: float = 0.15  
 var jump_buffer_time: float = 0.15 
 var coyote_timer: float = 0.0
 var jump_buffer_timer: float = 0.0
+var fall_multiplier = 1.5
 var dash_cooldown = 2.0
 var dash_time = 0.1
 var dash_power = 50.0
@@ -35,7 +36,10 @@ func _physics_process(delta: float) -> void:
 		jump_buffer_timer = jump_buffer_time
 
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		if velocity.y > 0:
+			velocity += get_gravity() * fall_multiplier * delta 
+		else:
+			velocity += get_gravity() * delta
 	if jump_buffer_timer > 0 and coyote_timer > 0:
 		velocity.y = JUMP_VELOCITY
 		jump_buffer_timer = 0 

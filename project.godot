@@ -19,11 +19,17 @@ config/icon="res://Assets/Sprites/icon.svg"
 
 gamemanager="*res://Scripts/gamemanager.gd"
 audiomanager="*res://Scripts/audiomanager.gd"
+navigationmanager="*res://Scripts/navigationmanager.gd"
 
 [editor]
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[global_group]
+
+enemy=""
+player=""
 
 [input]
 
@@ -52,7 +58,8 @@ dash={
 
 2d_physics/layer_1="Terrain"
 2d_physics/layer_2="Player"
+2d_physics/layer_3="enemy"
 
 [physics]
 
-2d/default_gravity=2362.8370000000004
+2d/default_gravity=1960.0
