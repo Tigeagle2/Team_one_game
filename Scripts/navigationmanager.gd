@@ -33,23 +33,26 @@ func _add_points():
 					astar.add_point(id, global_pos)
 
 func _connect_points():
-	for id in astar.get_point_ids():
+	var points = astar.get_point_ids()
+	for id in points:
 		var pos = astar.get_point_position(id)
 		var cell = tilemap.local_to_map(tilemap.to_local(pos))
 		
-		# 1. Standard Horizontal Neighbors (Walking)
-		var horizontal = [cell + Vector2i(1, 0), cell + Vector2i(-1, 0)]
-		for n_cell in horizontal:
-			_check_and_connect(id, n_cell)
-		
-		# 2. Jump/Fall Neighbors (Checking 2-3 tiles away)
-		# This lets the AI "see" a path from a ledge to the floor
-		for x_offset in [-1, 1]:
-			for y_offset in [-2, -1, 1, 2, 3]: # Check above and below
-				var jump_cell = cell + Vector2i(x_offset, y_offset)
-				_check_and_connect(id, jump_cell)
+		# We check a window around every point to find other platforms
+		# x_range: How far can the enemy leap?
+		# y_range: how high can they jump / how far can they fall?
+		for x_off in range(-5, 20): 
+			for y_off in range(-6, 7):
+				if x_off == 0 and y_off == 0: continue
+				
+				var target_cell = cell + Vector2i(x_off, y_off)
+				var target_id = _get_id(target_cell)
+				
+				if astar.has_point(target_id):
+					# Connect the points! 
+					# This creates the "bridges" between separate platforms.
+					astar.connect_points(id, target_id, true)
 
-# Helper function to keep code clean
 func _check_and_connect(id: int, target_cell: Vector2i):
 	var target_id = _get_id(target_cell)
 	if astar.has_point(target_id):
@@ -58,7 +61,7 @@ func _check_and_connect(id: int, target_cell: Vector2i):
 
 func _get_id(cell: Vector2i) -> int:
 	# Better hashing to avoid collisions
-	return (cell.x * 31) ^ (cell.y * 71)
+	return abs(hash(cell))
 
 func get_path_to_target(start_pos: Vector2, end_pos: Vector2) -> PackedVector2Array:
 	var start_id = astar.get_closest_point(start_pos)
@@ -67,4 +70,12 @@ func get_path_to_target(start_pos: Vector2, end_pos: Vector2) -> PackedVector2Ar
 	if start_id == -1 or end_id == -1:
 		return PackedVector2Array() 
 		
-	return astar.get_point_path(start_id, end_id)
+	var path = astar.get_point_path(start_id, end_id)
+	
+	# FALLBACK: If there's no way to reach the player, 
+	# find a point that gets the enemy as close as possible.
+	if path.size() == 0:
+		# Just return the closest point it CAN reach
+		return PackedVector2Array([astar.get_point_position(start_id)])
+
+	return path
