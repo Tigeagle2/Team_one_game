@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dbm7aui6exmkn"]
 
-[ext_resource type="Script" uid="uid://dkwk7rqdy2an1" path="res://Scripts/test_enemy.gd" id="1_r1vdb"]
+[ext_resource type="Script" uid="uid://dkwk7rqdy2an1" path="res://Scripts/vampire.gd" id="1_r1vdb"]
 [ext_resource type="Texture2D" uid="uid://dagreojbr1v67" path="res://Assets/Sprites/Vampire.png" id="2_bs22l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5b80j"]
@@ -47,7 +47,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5b80j"]
 size = Vector2(64.5, 96)
 
-[node name="test_enemy" type="CharacterBody2D" groups=["enemy"]]
+[node name="Vampire" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
 script = ExtResource("1_r1vdb")
 
