@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 500.0
+@export var speed = 773.0
 @export var jump_velocity = -1000.0
 @onready var player = get_tree().get_first_node_in_group("player")
 

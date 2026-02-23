@@ -42,7 +42,7 @@ func _connect_points():
 		# x_range: How far can the enemy leap?
 		# y_range: how high can they jump / how far can they fall?
 		for x_off in range(-5, 20): 
-			for y_off in range(-6, 7):
+			for y_off in range(-6, 10):
 				if x_off == 0 and y_off == 0: continue
 				
 				var target_cell = cell + Vector2i(x_off, y_off)
