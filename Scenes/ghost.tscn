@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://feax8c7fhoy2"]
+
+[ext_resource type="Texture2D" uid="uid://j12yvdv74ux3" path="res://Assets/Sprites/icon.svg" id="1_3mxmt"]
+[ext_resource type="Script" uid="uid://yr7qfsdoebbd" path="res://Scripts/ghost.gd" id="1_e3r4w"]
+
+[node name="Ghost" type="Area2D"]
+script = ExtResource("1_e3r4w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.578125, 0.578125)
+texture = ExtResource("1_3mxmt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]

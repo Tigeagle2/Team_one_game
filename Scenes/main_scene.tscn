@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://dqpb340knlgbc"]
+[gd_scene load_steps=8 format=4 uid="uid://dqpb340knlgbc"]
 
 [ext_resource type="PackedScene" uid="uid://bk0lopc1kowlp" path="res://Scenes/player.tscn" id="1_52fb6"]
 [ext_resource type="Script" uid="uid://dmdxtl15l826i" path="res://Scripts/main_scene.gd" id="1_jv6wh"]
 [ext_resource type="Texture2D" uid="uid://cbvitjytrbyxy" path="res://Assets/Sprites/world_tileset (4).png" id="2_6l7je"]
 [ext_resource type="PackedScene" uid="uid://dbm7aui6exmkn" path="res://Scenes/test_enemy.tscn" id="4_x6ack"]
+[ext_resource type="PackedScene" uid="uid://feax8c7fhoy2" path="res://Scenes/ghost.tscn" id="5_iacmt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jv6wh"]
 texture = ExtResource("2_6l7je")
@@ -1625,3 +1626,7 @@ position = Vector2(-7521, 148)
 
 [node name="test_enemy" parent="." instance=ExtResource("4_x6ack")]
 position = Vector2(-7957, 122)
+position = Vector2(745, 131)
+
+[node name="Ghost" parent="." instance=ExtResource("5_iacmt")]
+position = Vector2(1169, -29)

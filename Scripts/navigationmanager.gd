@@ -41,8 +41,8 @@ func _connect_points():
 		# We check a window around every point to find other platforms
 		# x_range: How far can the enemy leap?
 		# y_range: how high can they jump / how far can they fall?
-		for x_off in range(-5, 20): 
-			for y_off in range(-6, 10):
+		for x_off in range(-10, 25): 
+			for y_off in range(-8, 9):
 				if x_off == 0 and y_off == 0: continue
 				
 				var target_cell = cell + Vector2i(x_off, y_off)
