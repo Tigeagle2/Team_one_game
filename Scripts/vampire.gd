@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed = 400.0 # Slightly lower speed often helps path following
-@export var jump_velocity = -800.0
+@export var jump_velocity = -1200.0
 @onready var player = get_tree().get_first_node_in_group("player")
 
 var current_path: PackedVector2Array = []

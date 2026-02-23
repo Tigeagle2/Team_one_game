@@ -1617,7 +1617,7 @@ sources/0 = SubResource("TileSetAtlasSource_jv6wh")
 script = ExtResource("1_jv6wh")
 
 [node name="Player" parent="." instance=ExtResource("1_52fb6")]
-position = Vector2(2017, 151)
+position = Vector2(-7347, 96)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(92, 34)
@@ -1628,4 +1628,4 @@ tile_set = SubResource("TileSet_x6ack")
 position = Vector2(1169, -29)
 
 [node name="Vampire" parent="." instance=ExtResource("4_x6ack")]
-position = Vector2(1569.3821, -424.34497)
+position = Vector2(-7662, 115)

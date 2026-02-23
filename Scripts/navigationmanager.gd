@@ -39,34 +39,26 @@ func _connect_points():
 
 	for id in points:
 		var pos = astar.get_point_position(id)
-		var cell = tilemap.local_to_map(tilemap.to_local(pos))
-		
-		for x_off in range(-10, 25): 
+
+		for x_off in range(-20, 20): # Adjusted range for performance
 			for y_off in range(-10, 10):
 				if x_off == 0 and y_off == 0: continue
 				
-				var target_cell = cell + Vector2i(x_off, y_off)
+				var target_cell = tilemap.local_to_map(tilemap.to_local(pos)) + Vector2i(x_off, y_off)
 				var target_id = _get_id(target_cell)
-
 				if astar.has_point(target_id):
 					var target_pos = astar.get_point_position(target_id)
 					
-					# --- THE FIX: Line of Sight Check ---
-					# Check if there is a 'Wall' between the two points
+					# 1. Check for PHYSICAL walls (Layer 1)
 					var query = PhysicsRayQueryParameters2D.create(pos, target_pos)
-					# Use your wall/obstacle collision layer here (e.g., layer 1)
-					query.collision_mask = 1 
-					var result = space_state.intersect_ray(query)
+					query.collision_mask = 1 # Your solid wall layer
+					var wall_collision = space_state.intersect_ray(query)
 
-					if result.is_empty():
-						# No obstacle! Direct walk/jump path.
+					# 2. Connection Logic
+					if wall_collision.is_empty():
+						# If there is NO wall, we can connect.
+						# This covers BOTH walking on flat ground AND jumping over gaps.
 						astar.connect_points(id, target_id, true)
-					else:
-						# There is an obstacle! 
-						# Only connect if the target_pos is HIGHER than the obstacle
-						# or if you want to explicitly allow 'Jump' connections here.
-						pass
-
 func _check_and_connect(id: int, target_cell: Vector2i):
 	var target_id = _get_id(target_cell)
 	if astar.has_point(target_id):
