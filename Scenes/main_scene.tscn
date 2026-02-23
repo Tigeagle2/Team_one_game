@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bk0lopc1kowlp" path="res://Scenes/player.tscn" id="1_52fb6"]
 [ext_resource type="Script" uid="uid://dmdxtl15l826i" path="res://Scripts/main_scene.gd" id="1_jv6wh"]
 [ext_resource type="Texture2D" uid="uid://cbvitjytrbyxy" path="res://Assets/Sprites/world_tileset (4).png" id="2_6l7je"]
-[ext_resource type="PackedScene" path="res://Scenes/vampire.tscn" id="5_6ev3c"]
+[ext_resource type="PackedScene" uid="uid://dbm7aui6exmkn" path="res://Scenes/vampire.tscn" id="5_6ev3c"]
 [ext_resource type="PackedScene" uid="uid://feax8c7fhoy2" path="res://Scenes/ghost.tscn" id="5_iacmt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jv6wh"]
@@ -1617,7 +1617,7 @@ sources/0 = SubResource("TileSetAtlasSource_jv6wh")
 script = ExtResource("1_jv6wh")
 
 [node name="Player" parent="." instance=ExtResource("1_52fb6")]
-position = Vector2(1974, 145)
+position = Vector2(-7193, 151)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(92, 34)
@@ -1628,4 +1628,4 @@ tile_set = SubResource("TileSet_x6ack")
 position = Vector2(1169, -29)
 
 [node name="Vampire" parent="." instance=ExtResource("5_6ev3c")]
-position = Vector2(1645, 131)
+position = Vector2(-7296, 108)
