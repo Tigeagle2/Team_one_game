@@ -12,13 +12,14 @@ var slow_time
 func _ready() -> void:
 	speed = base_speed
 func _process(delta: float) -> void:
-	if speed < base_speed:
-		if slow_time > 0:
-			slow_time -= delta
-		elif slow_time <= 0:
-			speed += delta * 100
-	if speed > base_speed:
-		speed = base_speed
+	if active:
+		if speed < base_speed:
+			if slow_time > 0:
+				slow_time -= delta
+			elif slow_time <= 0:
+				speed += delta * 100
+		if speed > base_speed:
+			speed = base_speed
 func _physics_process(delta):
 	if player and active:
 		time_passed += delta
