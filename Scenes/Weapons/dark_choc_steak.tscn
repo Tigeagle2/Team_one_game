@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0hj0h"]
 size = Vector2(97.5, 102)
 
-[node name="dark_choc_steak" type="Area2D"]
+[node name="dark_choc_steak" type="Area2D" groups=["weapon"]]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_0hj0h")

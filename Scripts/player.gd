@@ -14,6 +14,7 @@ var dash_power = 25.0
 
 var dash_ready: bool = true
 var dashing: bool = false
+var block_held_down: bool = false
 var player_direction = 1
 var weapons_library = {
 	"choc_steak" : preload("res://Scenes/Weapons/dark_choc_steak.tscn"),
@@ -71,8 +72,27 @@ func _equip_weapon(weapon_name: String):
 	var new_instance = weapon_scene.instantiate()
 	weapon_slot.add_child(new_instance)
 	current_weapon = new_instance 
+	if weapon_name == "spoon_bowl":
+		if new_instance.has_signal("block_status"):
+			new_instance.block_status.connect(_on_block_status_changed)
 	print("Successfully equipped: ", weapon_name)
 func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("dash") && dash_ready == true: 
+		print("dash")
+		dash_ready = false
+		dashing = true
+		await get_tree().create_timer(dash_time).timeout
+		dashing = false
+		await get_tree().create_timer(dash_cooldown).timeout
+		dash_ready = true
+	if event.is_action_pressed("block"):
+		if current_weapon.has_method("_toggle_block"):
+			current_weapon._toggle_block(true)
+	if event.is_action_released("block"):
+		if current_weapon.has_method("_toggle_block"):
+			current_weapon._toggle_block(false)
+	if block_held_down:
+		return
 	if event.is_action_pressed("attack"):
 		if is_instance_valid(current_weapon):
 			if current_weapon.has_method("_attack"):
@@ -81,11 +101,5 @@ func _input(event: InputEvent) -> void:
 				print("no attack method")
 		else:
 			print(" invalid instance")
-	elif event.is_action_pressed("dash") && dash_ready == true: 
-		print("dash")
-		dash_ready = false
-		dashing = true
-		await get_tree().create_timer(dash_time).timeout
-		dashing = false
-		await get_tree().create_timer(dash_cooldown).timeout
-		dash_ready = true
+func _on_block_status_changed(can_block: bool):
+	block_held_down = can_block

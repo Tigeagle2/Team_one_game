@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://cxq1hxaj6chnx"]
+[gd_scene load_steps=3 format=3 uid="uid://cxq1hxaj6chnx"]
 
-[node name="silver_spoon_and_bowl" type="Area2D"]
+[ext_resource type="Script" uid="uid://cnsfk2y8uib1j" path="res://Scripts/silver_spoon_and_bowl.gd" id="1_lpfgc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lpfgc"]
+size = Vector2(132, 152)
+
+[node name="silver_spoon_and_bowl" type="Area2D" groups=["weapon"]]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_lpfgc")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(65, 0)
+shape = SubResource("RectangleShape2D_lpfgc")
