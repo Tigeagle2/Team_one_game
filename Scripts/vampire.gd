@@ -13,16 +13,25 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var locked_dir_x: float = 0.0
 var needs_path_update: bool = false
 var waiting_for_landing: bool = false 
+var knockback_timer: float = 0.0
 
 func _physics_process(delta):
 	# 0. Cooldown Timer
 	if jump_cooldown > 0:
 		jump_cooldown -= delta
 
-	# 1. Gravity and Landing Logic
+	# 1. Gravity 
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	else:
+
+	if knockback_timer > 0:
+		knockback_timer -= delta
+		velocity.x = move_toward(velocity.x, 0, speed * delta * 3.0)
+		move_and_slide()
+		return
+
+	# 2. Landing Logic
+	if is_on_floor():
 		locked_dir_x = 0.0
 		if waiting_for_landing:
 			waiting_for_landing = false
@@ -31,13 +40,13 @@ func _physics_process(delta):
 		if needs_path_update:
 			update_path()
 
-	# 2. Midair Stop Logic (Falling straight down)
+	# 3. Midair Stop Logic (Falling straight down)
 	if waiting_for_landing:
 		velocity.x = move_toward(velocity.x, 0, speed * 0.1)
 		move_and_slide()
 		return
 
-	# 3. Pathfollowing Logic
+	# 4. Pathfollowing Logic
 	if target_index < current_path.size():
 		var target_pos = current_path[target_index]
 		
@@ -59,17 +68,12 @@ func _physics_process(delta):
 		var dir_x = sign(target_pos.x - global_position.x)
 		
 		if is_on_floor():
-			# --- THE LEDGE FREEZE FIX ---
 			var target_is_below = target_pos.y > global_position.y + 10
 			
 			if dist_x > 15:
 				velocity.x = move_toward(velocity.x, dir_x * speed, speed * 0.2)
 			elif target_is_below:
-				# We are aligned with a drop-off, but haven't fallen yet. 
-				# Maintain our current momentum to slide off the edge!
 				var slide_dir = sign(velocity.x)
-				
-				# If we somehow stopped dead, feel around for the edge to step off
 				if slide_dir == 0:
 					if not _has_floor_ahead(1): slide_dir = 1
 					elif not _has_floor_ahead(-1): slide_dir = -1
@@ -77,7 +81,6 @@ func _physics_process(delta):
 					
 				velocity.x = move_toward(velocity.x, slide_dir * speed, speed * 0.2)
 			else:
-				# Target is at our level and we reached it. Brake normally.
 				velocity.x = move_toward(velocity.x, 0, speed * 0.2)
 			
 			# JUMP LOGIC
@@ -107,7 +110,7 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, speed * 0.2)
 
 	move_and_slide()
-# Logic to actually grab the new path from the manager
+
 func update_path():
 	if player:
 		var path = navigationmanager.get_path_to_target(global_position, player.global_position)
@@ -118,11 +121,10 @@ func update_path():
 
 func _on_timer_timeout():
 	if is_on_floor():
-		# If we are on the ground, update immediately
 		update_path()
 	else:
-		# If we are in the air, just set the flag to update upon landing
 		needs_path_update = true
+
 func _has_floor_ahead(dir_x: float) -> bool:
 	if dir_x == 0: return true
 	
@@ -132,7 +134,6 @@ func _has_floor_ahead(dir_x: float) -> bool:
 	var start_pos = global_position + Vector2(dir_x * 30, 0)
 	
 	# Offset Y: Look 100px down to find floor. 
-	# If this is too short, the enemy will think flat ground is a ledge!
 	var end_pos = start_pos + Vector2(0, 100) 
 	
 	var query = PhysicsRayQueryParameters2D.create(start_pos, end_pos)
@@ -141,6 +142,7 @@ func _has_floor_ahead(dir_x: float) -> bool:
 	var result = space_state.intersect_ray(query)
 	
 	return not result.is_empty()
+
 func _take_damage():
 	var weapon_slot = player.get_node("weapon_slot")
 
@@ -148,3 +150,17 @@ func _take_damage():
 		var current_weapon = weapon_slot.get_child(0)
 		var damage = current_weapon.damage
 		health -= damage
+		var knockback_force_x = 700.0 * current_weapon.knockback_multiplier
+		var knockback_force_y = -350.0 
+		var push_dir = sign(global_position.x - player.global_position.x)
+		if push_dir == 0: push_dir = 1 
+		
+		velocity.x = push_dir * knockback_force_x
+		velocity.y = knockback_force_y
+		knockback_timer = 0.4 
+		locked_dir_x = 0.0
+		waiting_for_landing = false
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area is weapon:
+		_take_damage()

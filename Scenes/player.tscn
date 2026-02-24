@@ -56,7 +56,6 @@ libraries = {
 }
 
 [node name="main_ui" parent="." instance=ExtResource("2_cvnsp")]
-visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(7.4999967, 4.799996)

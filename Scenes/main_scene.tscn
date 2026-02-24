@@ -1625,7 +1625,7 @@ tile_map_data = PackedByteArray("AAAGAA0AAAADAAEAAAAGAA4AAAADAAIAAAAGAA8AAAADAAM
 tile_set = SubResource("TileSet_x6ack")
 
 [node name="Ghost" parent="." instance=ExtResource("5_iacmt")]
-position = Vector2(1169, -29)
+position = Vector2(-6803, 141)
 
 [node name="Vampire" parent="." instance=ExtResource("5_6ev3c")]
 position = Vector2(-7296, 108)
