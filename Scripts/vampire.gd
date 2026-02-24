@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var speed = 350.0 
+var health = 100.0
 var jump_velocity = -900.0
 var jump_cooldown: float = 0.0
 var gravity_multiplier = 0.9
@@ -140,3 +141,10 @@ func _has_floor_ahead(dir_x: float) -> bool:
 	var result = space_state.intersect_ray(query)
 	
 	return not result.is_empty()
+func _take_damage():
+	var weapon_slot = player.get_node("weapon_slot")
+
+	if weapon_slot.get_child_count() > 0:
+		var current_weapon = weapon_slot.get_child(0)
+		var damage = current_weapon.damage
+		health -= damage
