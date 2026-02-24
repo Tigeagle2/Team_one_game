@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://yh6ctty7qa8"]
+[gd_scene load_steps=3 format=3 uid="uid://yh6ctty7qa8"]
 
-[node name="holy_milk" type="Area2D"]
+[ext_resource type="Script" uid="uid://cmp7r12p4xfjg" path="res://Scripts/holy_milk.gd" id="1_kljog"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kljog"]
+size = Vector2(338.5, 282)
+
+[node name="holy_milk" type="Area2D" groups=["weapon"]]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_kljog")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(169.75, 0)
+shape = SubResource("RectangleShape2D_kljog")

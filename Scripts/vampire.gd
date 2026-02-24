@@ -1,6 +1,6 @@
 extends CharacterBody2D
-
-var speed = 350.0 
+const base_speed = 450
+var speed
 var health = 100.0
 var jump_velocity = -900.0
 var jump_cooldown: float = 0.0
@@ -14,7 +14,18 @@ var locked_dir_x: float = 0.0
 var needs_path_update: bool = false
 var waiting_for_landing: bool = false 
 var knockback_timer: float = 0.0
-
+var slow_time
+func _ready() -> void:
+	speed = base_speed
+func _process(delta: float) -> void:
+	if speed < base_speed:
+		if slow_time > 0:
+			slow_time -= delta
+		elif slow_time <= 0:
+			speed += delta * 100
+	if speed > base_speed:
+		speed = base_speed
+	print(speed)
 func _physics_process(delta):
 	# 0. Cooldown Timer
 	if jump_cooldown > 0:
@@ -149,18 +160,33 @@ func _take_damage():
 	if weapon_slot.get_child_count() > 0:
 		var current_weapon = weapon_slot.get_child(0)
 		var damage = current_weapon.damage
+		
 		health -= damage
+		_take_knockback()
+		if "slow_amount" in current_weapon:
+			speed = current_weapon.slow_amount * base_speed
+			slow_time = current_weapon.slowdown_duration
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("weapon") and not player.block_held_down:
+		_take_damage()
+	elif area.is_in_group("weapon") and player.block_held_down:
+		_take_knockback()
+func _take_knockback():
+	var weapon_slot = player.get_node("weapon_slot")
+	if weapon_slot.get_child_count() > 0:
+		var current_weapon = weapon_slot.get_child(0)
 		var knockback_force_x = 700.0 * current_weapon.knockback_multiplier
 		var knockback_force_y = -350.0 
+		if current_weapon.has_method("_toggle_block"):
+			if current_weapon.blocking:
+				knockback_force_x *= current_weapon.blocking_knockback_multiplier
+				knockback_force_y *= (current_weapon.blocking_knockback_multiplier)
 		var push_dir = sign(global_position.x - player.global_position.x)
-		if push_dir == 0: push_dir = 1 
+		if push_dir == 0: 
+			push_dir = 1 
 		
 		velocity.x = push_dir * knockback_force_x
 		velocity.y = knockback_force_y
 		knockback_timer = 0.4 
 		locked_dir_x = 0.0
 		waiting_for_landing = false
-
-func _on_hitbox_area_entered(area: Area2D) -> void:
-	if area is weapon:
-		_take_damage()
