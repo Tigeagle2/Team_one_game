@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbm7aui6exmkn"]
+[gd_scene load_steps=10 format=3 uid="uid://dbm7aui6exmkn"]
 
 [ext_resource type="Script" uid="uid://dkwk7rqdy2an1" path="res://Scripts/vampire.gd" id="1_r1vdb"]
 [ext_resource type="Texture2D" uid="uid://dagreojbr1v67" path="res://Assets/Sprites/Vampire.png" id="2_bs22l"]
@@ -44,6 +44,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vowtw"]
+size = Vector2(65, 96)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5b80j"]
 size = Vector2(64.5, 96)
 
@@ -57,12 +60,21 @@ sprite_frames = SubResource("SpriteFrames_ymh8f")
 animation = &"running"
 autoplay = "running"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3.75, 0)
-shape = SubResource("RectangleShape2D_5b80j")
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(3.5, 0)
+shape = SubResource("RectangleShape2D_vowtw")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2
 autostart = true
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3.75, 0)
+shape = SubResource("RectangleShape2D_5b80j")
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
