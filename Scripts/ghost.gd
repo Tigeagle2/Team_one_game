@@ -5,9 +5,7 @@ var wave_amplitude = 75.0
 var wave_frequency = 3.0
 var time_passed = 0.0
 var active: bool = false
-var off_screen: bool = true
 var invincible: bool = false
-var off_screen_active_time = 5.0
 var health = 100.0
 var slow_time
 @onready var player = get_tree().get_first_node_in_group("player")
@@ -33,13 +31,6 @@ func _physics_process(delta):
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	active = true
-	off_screen = false
-
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	off_screen = true
-	await get_tree().create_timer(off_screen_active_time).timeout
-	if off_screen == true:
-		active = false;
 
 func _take_damage():
 	var weapon_slot = player.get_node("weapon_slot")
