@@ -40,7 +40,7 @@ func _connect_points():
 	for id in points:
 		var pos = astar.get_point_position(id)
 
-		for x_off in range(-20, 20): # Adjusted range for performance
+		for x_off in range(-22, 22): # Adjusted range for performance
 			for y_off in range(-10, 10):
 				if x_off == 0 and y_off == 0: continue
 				
@@ -59,6 +59,7 @@ func _connect_points():
 						# If there is NO wall, we can connect.
 						# This covers BOTH walking on flat ground AND jumping over gaps.
 						astar.connect_points(id, target_id, true)
+
 func _check_and_connect(id: int, target_cell: Vector2i):
 	var target_id = _get_id(target_cell)
 	if astar.has_point(target_id):
