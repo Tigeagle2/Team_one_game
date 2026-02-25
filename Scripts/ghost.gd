@@ -1,5 +1,5 @@
 extends Area2D
-const base_speed = 350
+const base_speed = 500
 var speed 
 var wave_amplitude = 75.0
 var wave_frequency = 3.0
