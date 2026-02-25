@@ -10,6 +10,7 @@ const regen_cooldown_time = 5
 var regen_time_gap = 1
 var regen_checking: bool = true
 var regen_timer = 0.0
+var score = 0
 
 func _ready() -> void:
 	Engine.time_scale = 1
