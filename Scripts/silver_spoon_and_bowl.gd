@@ -7,9 +7,9 @@ var blocking: bool = false
 var attack_duration = 0.2
 var attack_cooldown = 0.5
 var block_timer 
-var block_timer_max = 5
+var block_timer_max = 1
 var block_cooldown
-var block_cooldown_max = 3
+var block_cooldown_max = 2
 @onready var player = get_tree().get_first_node_in_group("player")
 signal block_status(can_block: bool)
 # Called when the node enters the scene tree for the first time.
