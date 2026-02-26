@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccw6tcxa7cfd1"]
+[gd_scene load_steps=7 format=3 uid="uid://ccw6tcxa7cfd1"]
 
-[ext_resource type="Script" uid="uid://buducshwwnl2v" path="res://Scenes/title_screen.gd" id="1_4gxqj"]
+[ext_resource type="Script" uid="uid://buducshwwnl2v" path="res://Scripts/title_screen.gd" id="1_4gxqj"]
 [ext_resource type="Texture2D" uid="uid://cqt8ihtnp0m25" path="res://Assets/Sprites/Bowl of Chocolate Cereal.png" id="1_klylv"]
-[ext_resource type="Script" uid="uid://v6p8jd43jhbv" path="res://Scenes/start_button.gd" id="3_twnyg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_62dcu"]
 font_size = 40
@@ -74,4 +73,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_4gxqj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_twnyg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_55kwv")
 text = "START GAME"
-script = ExtResource("3_twnyg")
+
+[connection signal="mouse_entered" from="UIRoot/Control/StartButton" to="." method="_on_start_button_mouse_entered"]
+[connection signal="mouse_exited" from="UIRoot/Control/StartButton" to="." method="_on_start_button_mouse_exited"]
+[connection signal="pressed" from="UIRoot/Control/StartButton" to="." method="_on_start_button_pressed"]

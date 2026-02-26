@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Team_one_game"
-run/main_scene="uid://dqpb340knlgbc"
+run/main_scene="uid://ccw6tcxa7cfd1"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://Assets/Sprites/icon.svg"
 
