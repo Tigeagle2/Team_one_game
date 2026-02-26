@@ -5,6 +5,7 @@ var health = 100.0
 var jump_velocity = -900.0
 var jump_cooldown: float = 0.0
 var gravity_multiplier = 0.9
+var damage_amount = 10
 @onready var player = get_tree().get_first_node_in_group("player")
 
 var current_path: PackedVector2Array = []
@@ -19,7 +20,7 @@ var active: bool = false
 func _ready() -> void:
 	speed = base_speed
 func _process(delta: float) -> void:
-	if active:
+	if active && gamemanager.gamerunning:
 		if speed < base_speed:
 			if slow_time > 0:
 				slow_time -= delta
@@ -27,9 +28,12 @@ func _process(delta: float) -> void:
 				speed += delta * 100
 		if speed > base_speed:
 			speed = base_speed
+	if health <= 0:
+		gamemanager.score += 100
+		queue_free()
 func _physics_process(delta):
 	# 0. Cooldown Timer
-	if active:
+	if active && gamemanager.gamerunning:
 		if jump_cooldown > 0:
 			jump_cooldown -= delta
 
@@ -192,7 +196,9 @@ func _take_knockback():
 		knockback_timer = 0.4 
 		locked_dir_x = 0.0
 		waiting_for_landing = false
-
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		gamemanager._take_damage(10)
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	active = true

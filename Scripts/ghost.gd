@@ -8,11 +8,12 @@ var active: bool = false
 var invincible: bool = false
 var health = 100.0
 var slow_time
+var damage_amount = 10
 @onready var player = get_tree().get_first_node_in_group("player")
 func _ready() -> void:
 	speed = base_speed
 func _process(delta: float) -> void:
-	if active:
+	if active and gamemanager.gamerunning:
 		if speed < base_speed:
 			if slow_time > 0:
 				slow_time -= delta
@@ -20,8 +21,11 @@ func _process(delta: float) -> void:
 				speed += delta * 100
 		if speed > base_speed:
 			speed = base_speed
+	if health <= 0:
+		gamemanager.score += 100
+		queue_free()
 func _physics_process(delta):
-	if player and active:
+	if player and active and gamemanager.gamerunning:
 		time_passed += delta
 		var direction = global_position.direction_to(player.global_position)
 		var side_direction = Vector2(-direction.y, direction.x)
@@ -85,5 +89,11 @@ func _teleport_to_edge():
 		3: global_position = Vector2(right, randf_range(top, bottom))
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("weapon") and not invincible:
+	if area.is_in_group("weapon") and not invincible and not player.block_held_down:
 		_take_damage()
+	elif area.is_in_group("weapon") and not invincible and player.block_held_down:
+		_start_teleport_sequence()
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		gamemanager._take_damage(damage_amount)

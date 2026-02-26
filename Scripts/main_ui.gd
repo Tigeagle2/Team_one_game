@@ -24,4 +24,5 @@ func _on_weapon_button_3_pressed() -> void:
 	_clear_weapon_selection()
 
 func _clear_weapon_selection():
+	gamemanager.gamerunning = true
 	$weapon_select_panel.visible = false
