@@ -1,14 +1,77 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccw6tcxa7cfd1"]
+[gd_scene load_steps=8 format=3 uid="uid://ccw6tcxa7cfd1"]
+
+[ext_resource type="Script" uid="uid://buducshwwnl2v" path="res://Scenes/title_screen.gd" id="1_4gxqj"]
+[ext_resource type="Texture2D" uid="uid://cqt8ihtnp0m25" path="res://Assets/Sprites/Bowl of Chocolate Cereal.png" id="1_klylv"]
+[ext_resource type="Script" uid="uid://v6p8jd43jhbv" path="res://Scenes/start_button.gd" id="3_twnyg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_62dcu"]
 font_size = 40
+font_color = Color(0, 0, 1, 1)
+outline_size = 14
+outline_color = Color(0.64705884, 0.16470589, 0.16470589, 1)
+shadow_size = 30
+shadow_color = Color(0.6272755, 0.32033062, 0.040033426, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gxqj"]
+bg_color = Color(0.6340716, 0.4398672, 0.18936396, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_twnyg"]
+bg_color = Color(0.341924, 0.22707099, 0.058585785, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55kwv"]
+bg_color = Color(0.8063635, 0.595785, 0.27853158, 1)
 
 [node name="title_screen" type="Node2D"]
+script = ExtResource("1_4gxqj")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 436.0
-offset_top = 113.0
-offset_right = 730.0
-offset_bottom = 168.0
-text = "Title Goes Here"
+top_level = true
+offset_left = 455.0
+offset_top = 230.0
+offset_right = 749.0
+offset_bottom = 285.0
+text = "Cereal Hunter"
 label_settings = SubResource("LabelSettings_62dcu")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_left = 5.0
+offset_top = -1.0
+offset_right = 1165.0
+offset_bottom = 831.0
+texture = ExtResource("1_klylv")
+
+[node name="UIRoot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="UIRoot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="UIRoot/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 729.0
+offset_top = 502.0
+offset_right = 951.0
+offset_bottom = 588.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_4gxqj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_twnyg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_55kwv")
+text = "START GAME"
+script = ExtResource("3_twnyg")
