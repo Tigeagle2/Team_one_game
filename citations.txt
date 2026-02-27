@@ -1,0 +1,1 @@
+Caden Douglas: I didn't really any tutorials (tried to use one for enemy ai, but it turned out to be a little much). Other than that, I personally used google search and Gemini AI for this game. AI was used for more complex coding challenges, like enemy pathing and the ghost sine wave movement. Most of the other code was created by me
