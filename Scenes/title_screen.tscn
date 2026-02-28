@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ccw6tcxa7cfd1"]
 
-[ext_resource type="Script" path="res://Scenes/title_screen.gd" id="1_4gxqj"]
+[ext_resource type="Script" uid="uid://buducshwwnl2v" path="res://Scripts/title_screen.gd" id="1_4gxqj"]
 [ext_resource type="Texture2D" uid="uid://cqt8ihtnp0m25" path="res://Assets/Sprites/Bowl of Chocolate Cereal.png" id="1_klylv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_62dcu"]
@@ -24,10 +24,10 @@ script = ExtResource("1_4gxqj")
 
 [node name="Label" type="Label" parent="."]
 top_level = true
-offset_left = 455.0
-offset_top = 230.0
-offset_right = 749.0
-offset_bottom = 285.0
+offset_left = 319.0
+offset_top = 236.0
+offset_right = 806.0
+offset_bottom = 335.0
 text = "Cereal Hunter"
 label_settings = SubResource("LabelSettings_62dcu")
 
