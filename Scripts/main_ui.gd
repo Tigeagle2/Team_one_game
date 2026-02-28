@@ -3,7 +3,7 @@ signal weapon_selected(weapon_name)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$weapon_select_panel/weapon_button_1.grab_focus()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

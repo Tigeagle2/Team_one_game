@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 800.0
-const JUMP_VELOCITY = -800.0
+const JUMP_VELOCITY = -850.0
 var coyote_time: float = 0.15  
 var jump_buffer_time: float = 0.15 
 var coyote_timer: float = 0.0
@@ -27,41 +27,42 @@ var current_weapon
 func _ready() -> void:
 	ui.weapon_selected.connect(_equip_weapon)
 func _physics_process(delta: float) -> void:
-	if is_on_floor():
-		coyote_timer = coyote_time 
-	else:
-		coyote_timer -= delta 
-
-	jump_buffer_timer -= delta
-	if Input.is_action_just_pressed("ui_accept"):
-		jump_buffer_timer = jump_buffer_time
-
-	if not is_on_floor():
-		if velocity.y > 0:
-			velocity += get_gravity() * fall_multiplier * delta 
+	if gamemanager.gamerunning:
+		if is_on_floor():
+			coyote_timer = coyote_time 
 		else:
-			velocity += get_gravity() * delta
-	if jump_buffer_timer > 0 and coyote_timer > 0:
-		velocity.y = JUMP_VELOCITY
-		jump_buffer_timer = 0 
-		coyote_timer = 0    
+			coyote_timer -= delta 
 
-	var input_direction = Input.get_axis("key_a", "key_d")	
-	if input_direction:
-		velocity.x = input_direction * SPEED
-		$AnimationPlayer.play("Walk")
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-	if input_direction != 0 and not dashing:
-		player_direction = sign(input_direction)	
-		$Sprite2D.flip_h = (player_direction == -1)
-		$weapon_slot.scale.x = player_direction
-		#print(player_direction)
-	if dashing:
-		velocity.x = player_direction * dash_power * 100
-		#print(player_direction * delta * dash_power)
+		jump_buffer_timer -= delta
+		if Input.is_action_just_pressed("jump"):
+			jump_buffer_timer = jump_buffer_time
 
-	move_and_slide()
+		if not is_on_floor():
+			if velocity.y > 0:
+				velocity += get_gravity() * fall_multiplier * delta 
+			else:
+				velocity += get_gravity() * delta
+		if jump_buffer_timer > 0 and coyote_timer > 0:
+			velocity.y = JUMP_VELOCITY
+			jump_buffer_timer = 0 
+			coyote_timer = 0    
+
+		var input_direction = Input.get_axis("key_a", "key_d")	
+		if input_direction:
+			velocity.x = input_direction * SPEED
+			$AnimationPlayer.play("Walk")
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+		if input_direction != 0 and not dashing:
+			player_direction = sign(input_direction)	
+			$Sprite2D.flip_h = (player_direction == -1)
+			$weapon_slot.scale.x = player_direction
+			#print(player_direction)
+		if dashing:
+			velocity.x = player_direction * dash_power * 100
+			#print(player_direction * delta * dash_power)
+
+		move_and_slide()
 func _equip_weapon(weapon_name: String):
 	if not weapons_library.has(weapon_name):
 		print("Weapon not found!")
@@ -81,6 +82,7 @@ func _input(event: InputEvent) -> void:
 		print("dash")
 		dash_ready = false
 		dashing = true
+		Input.start_joy_vibration(0, 1, 0, dash_time)
 		await get_tree().create_timer(dash_time).timeout
 		dashing = false
 		await get_tree().create_timer(dash_cooldown).timeout
