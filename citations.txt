@@ -3,3 +3,8 @@ Caden Douglas: I didn't really any tutorials (tried to use one for enemy ai, but
 Nikalis Shepard: I didn't really use any tutorials either. I used the piskel program to design sprites and backgrounds. And I used chatgpt for really complex coding that I initially did to have something for Caden to work on whenever he could.
 
 Damien Davis: Main things I worked on were music and the level. The program i used for the music was FL studio a paid music making software.
+
+Melvin Benitez:
+I made the sprites and tilemap using Piskel and IbisPaintX from the App Store. This is the link for the background used https://edermunizz.itch.io/free-pixel-art-forest
+I also made walking animations for the player and vampires.
+
