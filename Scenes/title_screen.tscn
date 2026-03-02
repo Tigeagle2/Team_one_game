@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccw6tcxa7cfd1"]
+[gd_scene load_steps=8 format=3 uid="uid://ccw6tcxa7cfd1"]
 
 [ext_resource type="Script" uid="uid://buducshwwnl2v" path="res://Scripts/title_screen.gd" id="1_4gxqj"]
 [ext_resource type="Texture2D" uid="uid://cqt8ihtnp0m25" path="res://Assets/Sprites/Bowl of Chocolate Cereal.png" id="1_klylv"]
@@ -18,6 +18,9 @@ bg_color = Color(0.341924, 0.22707099, 0.058585785, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55kwv"]
 bg_color = Color(0.8063635, 0.595785, 0.27853158, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p3fck"]
+font_color = Color(0, 0, 0, 1)
 
 [node name="title_screen" type="Node2D"]
 script = ExtResource("1_4gxqj")
@@ -72,6 +75,17 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_4gxqj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_twnyg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_55kwv")
 text = "START GAME"
+
+[node name="control_label" type="Label" parent="."]
+offset_top = 25.0
+offset_right = 261.0
+offset_bottom = 164.0
+text = "Jump: Space, Bottom
+Attack: Left Click, Right
+Move: A and D, D-Pad or Left stick
+Dash: Q, Left
+Block: Right Click, Up"
+label_settings = SubResource("LabelSettings_p3fck")
 
 [connection signal="mouse_entered" from="UIRoot/Control/StartButton" to="." method="_on_start_button_mouse_entered"]
 [connection signal="mouse_exited" from="UIRoot/Control/StartButton" to="." method="_on_start_button_mouse_exited"]

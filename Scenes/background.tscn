@@ -1,5 +1,12 @@
-[gd_scene load_steps=0 format=3 uid="uid://p8cjgdrw0d4h"]
+[gd_scene load_steps=2 format=3 uid="uid://p8cjgdrw0d4h"]
+
+[ext_resource type="Texture2D" uid="uid://d2f4qo5jvpr17" path="res://Assets/Sprites/Dark Forest.png" id="1_sn1xx"]
 
 [node name="background" type="Node2D"]
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
+repeat_size = Vector2(700, 0)
+repeat_times = 9
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("1_sn1xx")

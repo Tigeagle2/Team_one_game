@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=4 uid="uid://dqpb340knlgbc"]
+[gd_scene load_steps=10 format=4 uid="uid://dqpb340knlgbc"]
 
 [ext_resource type="PackedScene" uid="uid://bk0lopc1kowlp" path="res://Scenes/player.tscn" id="1_52fb6"]
 [ext_resource type="Script" uid="uid://dmdxtl15l826i" path="res://Scripts/main_scene.gd" id="1_jv6wh"]
 [ext_resource type="Texture2D" uid="uid://cbvitjytrbyxy" path="res://Assets/Sprites/world_tileset (4).png" id="2_6l7je"]
 [ext_resource type="PackedScene" uid="uid://dbm7aui6exmkn" path="res://Scenes/vampire.tscn" id="5_6ev3c"]
 [ext_resource type="PackedScene" uid="uid://feax8c7fhoy2" path="res://Scenes/ghost.tscn" id="5_iacmt"]
+[ext_resource type="PackedScene" uid="uid://dudtpusuedtcg" path="res://Scenes/deathlayer.tscn" id="6_6ev3c"]
+[ext_resource type="PackedScene" uid="uid://cf1f33jwewa45" path="res://Scenes/win_box.tscn" id="7_maf8m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jv6wh"]
 texture = ExtResource("2_6l7je")
@@ -1617,7 +1619,7 @@ sources/0 = SubResource("TileSetAtlasSource_jv6wh")
 script = ExtResource("1_jv6wh")
 
 [node name="Player" parent="." instance=ExtResource("1_52fb6")]
-position = Vector2(-7193, 151)
+position = Vector2(-6102, 486)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(2078, 357)
@@ -1627,40 +1629,58 @@ tile_set = SubResource("TileSet_x6ack")
 [node name="enemies" type="Node" parent="."]
 
 [node name="Ghost" parent="enemies" instance=ExtResource("5_iacmt")]
-position = Vector2(-4022, -871)
+position = Vector2(-1835, -347)
 
 [node name="Vampire" parent="enemies" instance=ExtResource("5_6ev3c")]
-position = Vector2(-7604, 180)
+position = Vector2(-3553, 447)
 
 [node name="Vampire2" parent="enemies" instance=ExtResource("5_6ev3c")]
 position = Vector2(-2011, 136)
 
 [node name="Vampire3" parent="enemies" instance=ExtResource("5_6ev3c")]
-position = Vector2(-2087, 140)
+position = Vector2(-663, 115)
 
 [node name="Vampire4" parent="enemies" instance=ExtResource("5_6ev3c")]
 position = Vector2(2982, 435)
 
 [node name="Ghost2" parent="enemies" instance=ExtResource("5_iacmt")]
-position = Vector2(-2398, -892)
+position = Vector2(-765, -40)
 
 [node name="Ghost3" parent="enemies" instance=ExtResource("5_iacmt")]
 position = Vector2(-1525, 623)
 
 [node name="Ghost4" parent="enemies" instance=ExtResource("5_iacmt")]
-position = Vector2(-5038, -975)
+position = Vector2(-3269, -157)
 
 [node name="Ghost5" parent="enemies" instance=ExtResource("5_iacmt")]
-position = Vector2(-876, -1229)
+position = Vector2(604, -375)
 
 [node name="Ghost6" parent="enemies" instance=ExtResource("5_iacmt")]
 position = Vector2(2859, 924)
 
 [node name="Ghost7" parent="enemies" instance=ExtResource("5_iacmt")]
-position = Vector2(2743, -916)
+position = Vector2(3570, -324)
 
 [node name="Vampire5" parent="enemies" instance=ExtResource("5_6ev3c")]
-position = Vector2(-6262, 160)
+position = Vector2(-3221, 488)
 
-[node name="Player2" parent="." instance=ExtResource("1_52fb6")]
-position = Vector2(-5767, 386)
+[node name="Vampire6" parent="enemies" instance=ExtResource("5_6ev3c")]
+position = Vector2(5849, 439)
+
+[node name="Vampire7" parent="enemies" instance=ExtResource("5_6ev3c")]
+position = Vector2(6605, 351)
+
+[node name="Vampire8" parent="enemies" instance=ExtResource("5_6ev3c")]
+position = Vector2(4884, -33)
+
+[node name="Ghost8" parent="enemies" instance=ExtResource("5_iacmt")]
+position = Vector2(5528, 21)
+
+[node name="Ghost9" parent="enemies" instance=ExtResource("5_iacmt")]
+position = Vector2(6392, 76)
+
+[node name="deathlayer" parent="." instance=ExtResource("6_6ev3c")]
+position = Vector2(221, 1887)
+
+[node name="win_box" parent="." instance=ExtResource("7_maf8m")]
+position = Vector2(7523, 425)

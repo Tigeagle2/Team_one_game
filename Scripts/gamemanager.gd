@@ -12,7 +12,7 @@ var regen_checking: bool = true
 var regen_timer = 0.0
 var score = 0
 var time_pass = 0.0
-
+var win = false
 func _ready() -> void:
 	Engine.time_scale = 1
 	regen_cooldown = regen_cooldown_time
@@ -34,6 +34,8 @@ func _process(delta: float) -> void:
 	if time_pass >= 0.5:
 		print(health)
 		time_pass = 0
+	if health <= 0:
+		_end_game()
 func _take_damage(amount: float):
 	if not invincible:
 		invincible = true
@@ -41,3 +43,10 @@ func _take_damage(amount: float):
 		health -= amount
 		await get_tree().create_timer(i_time).timeout
 		invincible = false
+func _end_game():
+	get_tree().change_scene_to_file("res://Scenes/end_screen.tscn")
+func _restart_game():
+	score = 0
+	gamerunning = false
+	health =  100
+	get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bdvohluudbabh"]
+[gd_scene load_steps=9 format=3 uid="uid://bdvohluudbabh"]
 
 [ext_resource type="Script" uid="uid://cyiyvno6qa01q" path="res://Scripts/main_ui.gd" id="1_gmh8u"]
 [ext_resource type="Texture2D" uid="uid://df6g5avlwsbq2" path="res://Assets/Icon's/Dark Chocolate Stake.png" id="2_dcbcb"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://b5jyxl72fc1dj" path="res://Assets/Icon's/Holy Milk.png" id="4_7okpu"]
 [ext_resource type="Texture2D" uid="uid://207johi0lnaa" path="res://Assets/Icon's/Silver_Spoon_Bowl (2).png" id="5_bhqku"]
 [ext_resource type="Texture2D" uid="uid://ctxsvs6g6ucj4" path="res://Assets/Icon's/Holy Milk (2).png" id="7_ylo01"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ylo01"]
+font_size = 36
 
 [node name="main_ui" type="CanvasLayer"]
 script = ExtResource("1_gmh8u")
@@ -53,6 +56,18 @@ focus_neighbor_right = NodePath("../weapon_button_1")
 texture_normal = ExtResource("4_7okpu")
 texture_hover = ExtResource("7_ylo01")
 texture_focused = ExtResource("7_ylo01")
+
+[node name="score_label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Score: "
+label_settings = SubResource("LabelSettings_ylo01")
+
+[node name="health_bar" type="ProgressBar" parent="."]
+offset_left = 356.0
+offset_top = 1.0
+offset_right = 777.0
+offset_bottom = 28.0
 
 [connection signal="pressed" from="weapon_select_panel/weapon_button_1" to="." method="_on_weapon_button_1_pressed"]
 [connection signal="pressed" from="weapon_select_panel/weapon_button_2" to="." method="_on_weapon_button_2_pressed"]

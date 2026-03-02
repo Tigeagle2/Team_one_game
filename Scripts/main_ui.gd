@@ -8,7 +8,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	$score_label.text = "Score: " + str(gamemanager.score)
+	$health_bar.value = gamemanager.health
 
 
 func _on_weapon_button_1_pressed() -> void:

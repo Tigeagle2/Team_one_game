@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dudtpusuedtcg"]
+
+[ext_resource type="Script" uid="uid://dnme8n2lu1bxo" path="res://Scripts/deathlayer.gd" id="1_lof7t"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3mr8u"]
+
+[node name="deathlayer" type="Area2D"]
+collision_mask = 3
+script = ExtResource("1_lof7t")
+
+[node name="death_box" type="CollisionShape2D" parent="."]
+shape = SubResource("WorldBoundaryShape2D_3mr8u")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
