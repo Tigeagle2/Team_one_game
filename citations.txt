@@ -1,4 +1,4 @@
-Caden Douglas: I didn't really any tutorials (tried to use one for enemy ai, but it turned out to be a little much). Other than that, I personally used google search and Gemini AI for this game. AI was used for more complex coding challenges, like enemy pathing and the ghost sine wave movement. Most of the other code was created by me
+Caden Douglas: I didn't really use any tutorials (tried to use one for enemy ai, but it turned out to be a little much). Other than that, I personally used google search and Gemini AI for this game. AI was used for more complex coding challenges, like enemy pathing and the ghost sine wave movement. Most of the other code was created by me
 
 Nikalis Shepard: I didn't really use any tutorials either. I used the piskel program to design sprites and backgrounds. And I used chatgpt for really complex coding that I initially did to have something for Caden to work on whenever he could.
 
