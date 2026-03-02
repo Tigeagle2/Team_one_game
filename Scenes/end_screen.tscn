@@ -33,4 +33,16 @@ offset_right = 687.0
 offset_bottom = 374.0
 text = "Play Again"
 
+[node name="credits" type="Label" parent="."]
+offset_left = 3.0
+offset_top = 236.0
+offset_right = 167.0
+offset_bottom = 389.0
+text = "Creators:
+Caden Douglas
+Damien Davis
+Melvin Benitez-Lopez
+Nikalis Shepard
+"
+
 [connection signal="pressed" from="restart_button" to="." method="_on_restart_button_pressed"]
