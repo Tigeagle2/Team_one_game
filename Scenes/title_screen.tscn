@@ -10,6 +10,9 @@ outline_size = 14
 shadow_size = 30
 shadow_color = Color(0.6272755, 0.32033062, 0.040033426, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_p3fck"]
+font_color = Color(0, 0, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4gxqj"]
 bg_color = Color(0.6340716, 0.4398672, 0.18936396, 1)
 
@@ -18,9 +21,6 @@ bg_color = Color(0.341924, 0.22707099, 0.058585785, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55kwv"]
 bg_color = Color(0.8063635, 0.595785, 0.27853158, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_p3fck"]
-font_color = Color(0, 0, 0, 1)
 
 [node name="title_screen" type="Node2D"]
 script = ExtResource("1_4gxqj")
@@ -57,8 +57,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="StartButton" type="Button" parent="UIRoot/Control"]
-layout_mode = 1
+[node name="control_label" type="Label" parent="."]
+offset_top = 25.0
+offset_right = 261.0
+offset_bottom = 164.0
+text = "Jump: Space, Bottom
+Attack: Left Click, Right
+Move: A and D, D-Pad or Left stick
+Dash: Q, Left
+Block: Right Click, Up"
+label_settings = SubResource("LabelSettings_p3fck")
+
+[node name="StartButton" type="Button" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -76,17 +86,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_twnyg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_55kwv")
 text = "START GAME"
 
-[node name="control_label" type="Label" parent="."]
-offset_top = 25.0
-offset_right = 261.0
-offset_bottom = 164.0
-text = "Jump: Space, Bottom
-Attack: Left Click, Right
-Move: A and D, D-Pad or Left stick
-Dash: Q, Left
-Block: Right Click, Up"
-label_settings = SubResource("LabelSettings_p3fck")
-
-[connection signal="mouse_entered" from="UIRoot/Control/StartButton" to="." method="_on_start_button_mouse_entered"]
-[connection signal="mouse_exited" from="UIRoot/Control/StartButton" to="." method="_on_start_button_mouse_exited"]
-[connection signal="pressed" from="UIRoot/Control/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="mouse_entered" from="StartButton" to="." method="_on_start_button_mouse_entered"]
+[connection signal="mouse_exited" from="StartButton" to="." method="_on_start_button_mouse_exited"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
