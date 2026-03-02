@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ctxsvs6g6ucj4" path="res://Assets/Icon's/Holy Milk (2).png" id="7_ylo01"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ylo01"]
-font_size = 36
+font_size = 29
 
 [node name="main_ui" type="CanvasLayer"]
 script = ExtResource("1_gmh8u")
